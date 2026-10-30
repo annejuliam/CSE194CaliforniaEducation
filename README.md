@@ -26,3 +26,11 @@ The checked-in results use the directory snapshot documented in the data notes. 
 ## AI disclosure
 
 OpenAI Codex assisted with source discovery, processing, validation and documentation. Team review is pending. Retain the associated conversation for the course AI disclosure requirements.
+
+## Offline review preview
+
+Download the repository and open `preview/index.html` in a browser. No server, API key or installation is needed. The page contains all 19 records, a school selector, source links, period labels and a warning for co-located schools. It is a data review aid, not the final map or website.
+
+After changing the JSON data, run `python scripts/build_preview.py` to refresh the embedded snapshot. Run `python scripts/check_pilot.py` to check source-row and export consistency. Edit `preview/template.html`, not the generated page.
+
+See [Naifu's contribution record](docs/CONTRIBUTION.md) and [integration guidance](docs/DATA_INTEGRATION.md).
