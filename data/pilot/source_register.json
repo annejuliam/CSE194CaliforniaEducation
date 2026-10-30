@@ -1,0 +1,82 @@
+[
+  {
+    "source_id": "S1",
+    "title": "CDE Public School Directory",
+    "role": "Primary data",
+    "period": "Live snapshot 2026-10-29",
+    "page_url": "https://www.cde.ca.gov/ds/si/ds/pubschls.asp",
+    "download_url": "https://www.cde.ca.gov/schooldirectory/report?rid=dl1&tp=txt",
+    "verification": "Downloaded and parsed",
+    "usage_note": "School identifiers and coordinates; self-reported directory may contain errors."
+  },
+  {
+    "source_id": "S2",
+    "title": "CDE FRPM eligibility",
+    "role": "Primary data",
+    "period": "2024-2025",
+    "page_url": "https://www.cde.ca.gov/ds/ad/filessp.asp",
+    "download_url": "https://www.cde.ca.gov/ds/ad/documents/frpm2425.xlsx",
+    "verification": "Downloaded and parsed",
+    "usage_note": "Uses K-12 columns. Embedded Data Field Descriptions read. Not household income."
+  },
+  {
+    "source_id": "S3",
+    "title": "CDE Dashboard graduation",
+    "role": "Primary data",
+    "period": "2025 Dashboard / 2024-25",
+    "page_url": "https://www.cde.ca.gov/ta/ac/cm/graddatafiles.asp",
+    "download_url": "https://www3.cde.ca.gov/researchfiles/cadashboard/graddownload2025.txt",
+    "verification": "Downloaded and parsed",
+    "usage_note": "School rows, ALL group; combined four-/five-year measure."
+  },
+  {
+    "source_id": "S4",
+    "title": "CDE graduation file structure",
+    "role": "Methodology",
+    "period": "Reviewed 2026-10-06",
+    "page_url": "https://www.cde.ca.gov/ta/AC/cm/fsgrad.asp",
+    "download_url": "",
+    "verification": "Read via indexed official page",
+    "usage_note": "Definitions of source fields; not a distinct dataset."
+  },
+  {
+    "source_id": "S5",
+    "title": "Ed-Data",
+    "role": "Existing comparison product",
+    "period": "Mixed years",
+    "page_url": "https://ed-data.org/",
+    "download_url": "",
+    "verification": "Homepage verified; no extraction",
+    "usage_note": "Already offers school comparisons. Do not claim comparison alone is novel."
+  },
+  {
+    "source_id": "S6",
+    "title": "Stanford Educational Opportunity Explorer",
+    "role": "Existing product / context",
+    "period": "2008-09 through 2018-19, grades 3-8",
+    "page_url": "https://edopportunity.org/opportunity/explorer/",
+    "download_url": "",
+    "verification": "Official landing text verified",
+    "usage_note": "Different years and grades; not merged into this high-school sample."
+  },
+  {
+    "source_id": "S7",
+    "title": "CDE Fingertip Facts",
+    "role": "Statewide background",
+    "period": "Varies by table",
+    "page_url": "https://www.cde.ca.gov/ds/ad/ceffingertipfacts.asp",
+    "download_url": "",
+    "verification": "Official page accessible; not extracted",
+    "usage_note": "Background only; cannot supply school-level rows."
+  },
+  {
+    "source_id": "S8",
+    "title": "California School Dashboard",
+    "role": "Existing product",
+    "period": "Varies by indicator",
+    "page_url": "https://www.caschooldashboard.org/",
+    "download_url": "",
+    "verification": "Team-provided link; homepage not separately checked",
+    "usage_note": "Sample uses the official CDE downloadable data behind the Dashboard."
+  }
+]

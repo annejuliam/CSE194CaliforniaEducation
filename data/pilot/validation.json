@@ -1,0 +1,36 @@
+{
+  "rows": 19,
+  "unique_cds": 19,
+  "missing_frpm": 0,
+  "missing_graduation": 0,
+  "missing_coordinates": 0,
+  "frpm_ratio_checks": 19,
+  "graduation_rounding_checks": 19,
+  "coincident_coordinate_groups": [
+    {
+      "school_name": "Kearny College Connections",
+      "latitude": 32.798708,
+      "longitude": -117.16044
+    },
+    {
+      "school_name": "Kearny Digital Media & Design",
+      "latitude": 32.798708,
+      "longitude": -117.16044
+    },
+    {
+      "school_name": "Kearny Eng Innov & Design",
+      "latitude": 32.798708,
+      "longitude": -117.16044
+    },
+    {
+      "school_name": "Kearny School of Biomedical Science and Technology",
+      "latitude": 32.798708,
+      "longitude": -117.16044
+    }
+  ],
+  "source_sha256": {
+    "schools.txt": "059b68cafce1ffde0bcc7be69ce794e9713aa53d7f61cb93d6df050480effaa0",
+    "frpm2425.xlsx": "86fb8bc64ce0e433468f4a4b9038115a82031fee56125f76bacd56037a654a40",
+    "grad2025.txt": "e43d9fa9543463af489c703225c63ec7bb560c4df2a0e01429d2060581eb8b0b"
+  }
+}
