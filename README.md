@@ -1,5 +1,21 @@
 # CSE 194 California Education
 
+## Start here: using the pilot contribution
+
+The pilot adds cleaned school data and tools to reproduce it. You can use the existing exports without running the Python scripts.
+
+| Your task | Start with | Next step |
+| --- | --- | --- |
+| Review records | `preview/index.html` or `data/pilot/school_data_pilot.xlsx` | Open locally and review the 19 schools and source notes. |
+| Build the map | `data/pilot/schools_sample.geojson` | Load the features; use `cds_code` as each school's unique key. |
+| Build school details | `data/pilot/schools_sample.json` | Load the school fields and metrics into the app. |
+| Collect more data | `data/pilot/source_register.json` and `data_dictionary.json` | Check existing sources and fields; agree on coverage and join keys before adding data. |
+| Update the pilot | `scripts/prepare_pilot.py` and `scripts/check_pilot.py` | Follow the reproduction steps below, then check the exports. |
+
+See [the integration guide](docs/DATA_INTEGRATION.md) for field names, percentages, coordinates, and schools sharing a location. [The contribution record](docs/CONTRIBUTION.md) lists completed work.
+
+The preview is a standalone data-review page. The React frontend can consume the exports directly without adopting the preview HTML. Announce additional tasks in the group chat first and coordinate with whoever is already working on that area.
+
 ## Pilot data contribution — Naifu Liang
 
 A 19-school San Diego Unified pilot is available in [data/pilot](data/pilot). It joins three official CDE datasets on 14-digit CDS identifiers. This is a development sample, not statewide coverage or a completed website.
