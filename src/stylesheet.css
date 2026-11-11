@@ -1,3 +1,8 @@
+
+/*To do:
+ -- alternate background color for each section
+ --*/
+
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
 
 :root {
@@ -6,7 +11,7 @@
     --primary: black;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -14,6 +19,7 @@
     color: var(--primary);
 }
 
+/* Navbar Section */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -23,6 +29,7 @@
     left: 0;
     right: 0;
     padding: 1rem 2rem;
+    background-color: white;
 }
 
 .navbar > ul {
@@ -31,7 +38,7 @@
     gap: 2rem;
 }
 
-#navbar:hover{
+#navbar:hover {
     cursor: pointer;
 }
 
@@ -47,8 +54,151 @@
     cursor: pointer;
 }
 
+/*About Section */
+.about-section {
+    background-color: white;
+    padding: 3rem 2rem;
+}
+
+.about-section h2 {
+    font-family: var(--font-heading);
+    font-size: 2.25rem;
+}
+
 .about-container p {
     line-height: 1.7;
     margin-bottom: 1rem;
     max-width: 43.75rem;
+}
+
+/* Comparison Table Section */
+.comparison-section {
+    background-color: #f8f7f5;
+    padding: 3rem 2rem;
+}
+
+.comparison-section h2 {
+    font-family: var(--font-heading);
+    font-size: 2.25rem;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    font-family: var(--font-body);
+    background-color: #f8f7f5;
+}
+
+.comparison-table th {
+    text-align: left;
+    padding: 1rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-bottom: 0.1rem solid #e5e5e5;
+    background-color: rgb(250, 199, 117);
+}
+
+.comparison-table td {
+    padding: 1rem;
+    font-size: 0.9rem;
+    border-bottom: 0.1rem solid #e5e5e5;
+}
+
+.comparison-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.comparison-bar {
+    width: 100%;
+    height: 0.5rem;
+    background-color: #f0e0d4;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.bar-fill {
+    width: 50%;
+    height: 100%;
+    background-color: #c45a20;
+    border-radius: 1rem;
+}
+
+.comparison-table tbody tr:hover {
+    background-color: #f8f7f5;
+}
+
+/* Sources Section */
+.sources-section {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 4rem;
+    row-gap: 1rem;
+    padding: 3rem 2rem;
+    background-color: white;
+}
+
+.sources-section h2 {
+    font-family: var(--font-heading);
+    font-size: 2.25rem;
+    margin: 0;
+}
+
+.sources-section p {
+    max-width: 20rem;
+    line-height: 1.8;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.sources-section ol {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    list-style: none;
+    counter-reset: source-counter;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 3rem;
+    row-gap: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
+.sources-section li {
+    counter-increment: source-counter;
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    align-items: start;
+    padding: 0.75rem 0;
+    border-top: 0.08rem solid #d9d9d9;
+}
+
+.sources-section li::before {
+    content: counter(source-counter, decimal-leading-zero);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #6b7280;
+    margin-top: 0.1rem;
+}
+
+.sources-section a {
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 0.2rem;
+    transition: text-decoration-color 0.3s ease;
+    color: #2f5f93;
+    font-weight: 600;
+}
+
+.sources-section a:hover {
+    text-decoration-color: #2f5f93;
+}
+
+/* Footer Section */
+.site-footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.8rem;
+    color: #666;
+    background-color: #f8f7f5;
 }
