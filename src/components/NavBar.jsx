@@ -1,58 +1,45 @@
-import { useState } from 'react'
-import { Box, ButtonBase, Typography } from '@mui/material'
+import { useLayoutEffect, useRef } from "react";
 
-const sections = ["Explore Map", "Compare Schools", "Data Sources", "About"]
+function NavBar() {
+    const headerRef = useRef(null);
 
-const toId = (label) => label.toLowerCase().replace(/\s+/g, "-")
+    // Publish the header's live height (it wraps at narrow widths) so
+    // in-page anchors scroll to just below the sticky header. Layout effect so
+    // the value is set before first paint.
+    useLayoutEffect(() => {
+        const header = headerRef.current;
+        const root = document.documentElement;
+        const update = () =>
+            root.style.setProperty("--header-height", `${header.offsetHeight}px`);
 
-export default function NavBar() {
-    const [activeSection, setActiveSection] = useState(toId(sections[0]))
+        update();
+        const observer = new ResizeObserver(update);
+        observer.observe(header);
+
+        return () => {
+            observer.disconnect();
+            root.style.removeProperty("--header-height");
+        };
+    }, []);
 
     return (
-        <Box
-            component="nav"
-            sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: { xs: "space-between", md: "flex-start" },
-                gap: { xs: 0, md: 1 },
-                px: { xs: 0.5, md: 1 },
-                py: 1,
-                position: "sticky",
-                top: 0,
-                zIndex: 1000,
-                bgcolor: "background.paper",
-                borderBottom: 1,
-                borderColor: "divider",
-            }}
-        >
-            <Typography variant="h6" sx={{ mr: { md: 2 }, fontWeight: 700 }}>
-                Project Name
-            </Typography>
+        <header ref={headerRef} className="site-header">
+            <nav className="navbar">
+                <h1>
+                    <a href="#about">
+                        CSE 194: Education Equality in California
+                    </a>
+                </h1>
 
-            {sections.map((section) => {
-                const id = toId(section)
-                const isActive = activeSection === id
-                return (
-                    <ButtonBase
-                        key={id}
-                        component="a"
-                        href={`#${id}`}
-                        onClick={() => setActiveSection(id)}
-                        aria-current={isActive ? "page" : undefined}
-                        sx={{
-                            px: 1.5,
-                            py: 0.75,
-                            borderRadius: 1,
-                            fontWeight: isActive ? 700 : 400,
-                            color: isActive ? "primary.main" : "text.primary",
-                            "&:hover": { bgcolor: "action.hover" },
-                        }}
-                    >
-                        {section}
-                    </ButtonBase>
-                )
-            })}
-        </Box>
-    )
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#explore-map">Explore Map</a></li>
+                    <li><a href="#comparison">Compare Schools</a></li>
+                    <li><a href="#sources">Data & Sources</a></li>
+                </ul>
+            </nav>
+        </header>
+    );
 }
+
+export default NavBar;

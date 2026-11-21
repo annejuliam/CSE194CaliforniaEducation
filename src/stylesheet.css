@@ -1,0 +1,286 @@
+
+/*To do:
+ -- alternate background color for each section
+ --*/
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
+
+:root {
+    --font-heading: 'Fraunces', serif;
+    --font-body: 'Manrope', sans-serif;
+    --primary: black;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-body);
+}
+
+/* Keep in-page anchor targets from landing under the sticky header.
+   --header-height is measured and set by NavBar.jsx; 6rem is only a fallback. */
+html {
+    scroll-padding-top: calc(var(--header-height, 6rem) + 0.5rem);
+}
+
+body {
+    color: var(--primary);
+    background-color: white;
+}
+
+a {
+    color: inherit;
+}
+
+a:focus-visible {
+    outline: 0.15rem solid #2f5f93;
+    outline-offset: 0.2rem;
+    border-radius: 0.15rem;
+}
+
+/* Navbar Section */
+/* The header is the sticky element: a sticky child can't outlive a parent of its own height */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: white;
+    border-bottom: 0.08rem solid #e5e5e5;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem 2rem;
+    padding: 1rem 2rem;
+}
+
+.navbar > ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    gap: 0.5rem 2rem;
+}
+
+.navbar a {
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 0.5rem;
+    transition: text-decoration-color 0.5s ease;
+}
+
+.navbar a:hover,
+.navbar a:focus-visible {
+    text-decoration-color: var(--primary);
+    cursor: pointer;
+}
+
+/*About Section */
+.about-section {
+    background-color: white;
+    padding: 3rem 2rem;
+}
+
+.about-section h2 {
+    font-family: var(--font-heading);
+    font-size: 2.25rem;
+}
+
+.about-content p {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    max-width: 43.75rem;
+}
+
+/* Comparison Table Section */
+.comparison-section {
+    background-color: #f8f7f5;
+    padding: 3rem 2rem;
+}
+
+.comparison-section h2 {
+    font-family: var(--font-heading);
+    font-size: 2.25rem;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    font-family: var(--font-body);
+    background-color: #f8f7f5;
+}
+
+.comparison-table th {
+    text-align: left;
+    padding: 1rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-bottom: 0.1rem solid #e5e5e5;
+    background-color: rgb(250, 199, 117);
+}
+
+.comparison-table td {
+    padding: 1rem;
+    font-size: 0.9rem;
+    border-bottom: 0.1rem solid #e5e5e5;
+}
+
+.comparison-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.comparison-bar {
+    width: 100%;
+    height: 0.5rem;
+    background-color: #f0e0d4;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.bar-fill {
+    width: 50%;
+    height: 100%;
+    background-color: #c45a20;
+    border-radius: 1rem;
+}
+
+.comparison-table tbody tr:hover {
+    background-color: #f8f7f5;
+}
+
+/* Sources Section */
+.sources-section {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 4rem;
+    row-gap: 1rem;
+    padding: 3rem 2rem;
+    background-color: white;
+}
+
+.sources-section h2 {
+    font-family: var(--font-heading);
+    font-size: 2.25rem;
+    margin: 0;
+}
+
+.sources-section p {
+    max-width: 20rem;
+    line-height: 1.8;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.sources-section ol {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    list-style: none;
+    counter-reset: source-counter;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 3rem;
+    row-gap: 1rem;
+    margin: 0;
+    padding: 0;
+}
+
+.sources-section li {
+    counter-increment: source-counter;
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    align-items: start;
+    padding: 0.75rem 0;
+    border-top: 0.08rem solid #d9d9d9;
+}
+
+.sources-section li::before {
+    content: counter(source-counter, decimal-leading-zero);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #6b7280;
+    margin-top: 0.1rem;
+}
+
+.sources-section a {
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 0.2rem;
+    transition: text-decoration-color 0.3s ease;
+    color: #2f5f93;
+    font-weight: 600;
+}
+
+.sources-section a:hover {
+    text-decoration-color: #2f5f93;
+}
+
+/* Footer Section */
+.site-footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.8rem;
+    color: #666;
+    background-color: #f8f7f5;
+}
+
+/* Small screens */
+@media (max-width: 48rem) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        padding: 0.75rem 1rem;
+    }
+
+    .navbar h1 {
+        font-size: 1.25rem;
+    }
+
+    .navbar > ul {
+        gap: 0.25rem 1.25rem;
+    }
+
+    .about-section,
+    .comparison-section,
+    .sources-section {
+        padding: 2rem 1rem;
+    }
+
+    .about-section h2,
+    .comparison-section h2,
+    .sources-section h2 {
+        font-size: 1.75rem;
+    }
+
+    .comparison-content {
+        overflow-x: auto;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+        padding: 0.75rem 0.5rem;
+    }
+
+    .sources-section {
+        grid-template-columns: 1fr;
+    }
+
+    .sources-section p {
+        max-width: none;
+    }
+
+    .sources-section ol {
+        grid-column: 1;
+        grid-row: auto;
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
