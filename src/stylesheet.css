@@ -16,30 +16,52 @@
     padding: 0;
     box-sizing: border-box;
     font-family: var(--font-body);
+}
+
+/* Keep in-page anchor targets from landing under the sticky header.
+   --header-height is measured and set by NavBar.jsx; 6rem is only a fallback. */
+html {
+    scroll-padding-top: calc(var(--header-height, 6rem) + 0.5rem);
+}
+
+body {
     color: var(--primary);
+    background-color: white;
+}
+
+a {
+    color: inherit;
+}
+
+a:focus-visible {
+    outline: 0.15rem solid #2f5f93;
+    outline-offset: 0.2rem;
+    border-radius: 0.15rem;
 }
 
 /* Navbar Section */
+/* The header is the sticky element: a sticky child can't outlive a parent of its own height */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: white;
+    border-bottom: 0.08rem solid #e5e5e5;
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
-    top: 0;
-    left: 0;
-    right: 0;
+    gap: 1rem 2rem;
     padding: 1rem 2rem;
-    background-color: white;
 }
 
 .navbar > ul {
     display: flex;
+    flex-wrap: wrap;
     list-style: none;
-    gap: 2rem;
-}
-
-#navbar:hover {
-    cursor: pointer;
+    gap: 0.5rem 2rem;
 }
 
 .navbar a {
@@ -49,7 +71,8 @@
     transition: text-decoration-color 0.5s ease;
 }
 
-.navbar a:hover {
+.navbar a:hover,
+.navbar a:focus-visible {
     text-decoration-color: var(--primary);
     cursor: pointer;
 }
@@ -65,7 +88,7 @@
     font-size: 2.25rem;
 }
 
-.about-container p {
+.about-content p {
     line-height: 1.7;
     margin-bottom: 1rem;
     max-width: 43.75rem;
@@ -201,4 +224,63 @@
     font-size: 0.8rem;
     color: #666;
     background-color: #f8f7f5;
+}
+
+/* Small screens */
+@media (max-width: 48rem) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        padding: 0.75rem 1rem;
+    }
+
+    .navbar h1 {
+        font-size: 1.25rem;
+    }
+
+    .navbar > ul {
+        gap: 0.25rem 1.25rem;
+    }
+
+    .about-section,
+    .comparison-section,
+    .sources-section {
+        padding: 2rem 1rem;
+    }
+
+    .about-section h2,
+    .comparison-section h2,
+    .sources-section h2 {
+        font-size: 1.75rem;
+    }
+
+    .comparison-content {
+        overflow-x: auto;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+        padding: 0.75rem 0.5rem;
+    }
+
+    .sources-section {
+        grid-template-columns: 1fr;
+    }
+
+    .sources-section p {
+        max-width: none;
+    }
+
+    .sources-section ol {
+        grid-column: 1;
+        grid-row: auto;
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
 }
