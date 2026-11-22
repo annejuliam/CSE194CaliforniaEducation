@@ -34,9 +34,9 @@ keys; then replace the data and update the on-page scope and period labels toget
 
 ## Review and run
 
-This branch is based on Bob's `integrate/annejulia` (PR #2). Review this PR against
-that branch so Bob's layout changes are not duplicated in our diff. Once PR #2
-lands, retarget this PR to main and resolve any new changes before merging.
+PR #2 and PR #3 were merged into main on November 22, 2026. The comparison is
+available in main; deployment remains unverified. The original stacked-branch
+merge instructions no longer apply.
 
 Run `npm ci`, `npm run lint`, `npm run build`, and `npm run dev`.
 Check both selectors, same-school selection, all four Kearny records, keyboard
