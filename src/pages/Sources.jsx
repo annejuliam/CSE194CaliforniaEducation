@@ -5,10 +5,15 @@ function Sources() {
             <h2>Data &amp; Sources</h2>
 
             <p>
-                We use public data from government agencies and
-                independent research groups. Correlation is not
-                causation: income is one of many factors linked
-                to state testing outcomes.
+                The current comparison uses CDE enrollment, meal eligibility,
+                and graduation data for a 19-school pilot. These indicators
+                describe different populations and do not establish causation
+                or an overall ranking of school quality.
+            </p>
+            <p>
+                <a href="https://github.com/annejuliam/CSE194CaliforniaEducation/blob/main/docs/RESOURCES.md">
+                    Full resource list, data periods, and interpretation notes
+                </a>
             </p>
 
             <ol>
