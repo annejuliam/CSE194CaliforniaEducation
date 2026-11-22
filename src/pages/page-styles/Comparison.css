@@ -1,6 +1,31 @@
-.comparison {
-  min-height: 50vh;
-  width: 100%;
+.school-selectors {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1.5rem 0;
 }
+
+.school-selector {
+  display: flex;
+  flex: 1 1 16rem;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+  font-weight: 600;
+}
+
+.school-selector select {
+  width: 100%;
+  padding: 0.75rem;
+  font: inherit;
+  color: #172b3a;
+  background: white;
+  border: 1px solid #687a87;
+  border-radius: 0.25rem;
+}
+
+.comparison-scroll { overflow-x: auto; }
+.comparison-table caption { text-align: left; padding: 0.75rem 0; }
+.comparison-table tbody th { text-align: left; }
+.school-selector select:focus-visible,
+.comparison-scroll:focus-visible { outline: 3px solid #126da8; outline-offset: 3px; }
