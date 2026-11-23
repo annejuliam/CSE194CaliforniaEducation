@@ -1,0 +1,8 @@
+{
+  "meta": {
+    "description": "School locations for the Explore Map. Currently empty — pilot 19-school list removed.",
+    "count": 0,
+    "metricSource": "CDE Free or Reduced-Price Meal eligibility remains in data/frpm/ for a future join once coordinates are available."
+  },
+  "schools": []
+}
