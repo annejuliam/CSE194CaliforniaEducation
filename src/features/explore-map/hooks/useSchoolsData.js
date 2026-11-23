@@ -2,14 +2,16 @@ import { useEffect, useState } from 'react'
 import { SCHOOLS_DATA_URL } from '../config'
 
 /**
- * Fetches school locations from `public/data/schools.json` (may be empty).
- *
- * Returns `{ status: 'loading' | 'success' | 'error', schools, error }`.
- * Aborts in-flight requests on unmount / URL change so a slow response
- * cannot overwrite newer state after the user leaves the page.
+ * Loads joined school records from `public/data/schools.json`.
+ * Returns `{ status, schools, meta, error }`.
  */
 export function useSchoolsData(url = SCHOOLS_DATA_URL) {
-  const [state, setState] = useState({ status: 'loading', schools: [], error: null })
+  const [state, setState] = useState({
+    status: 'loading',
+    schools: [],
+    meta: null,
+    error: null,
+  })
 
   useEffect(() => {
     const controller = new AbortController()
@@ -20,13 +22,16 @@ export function useSchoolsData(url = SCHOOLS_DATA_URL) {
         return response.json()
       })
       .then((file) => {
-        // File shape: { meta, schools: [{ id, name, detail, county, coords }] }
-        setState({ status: 'success', schools: file.schools ?? [], error: null })
+        setState({
+          status: 'success',
+          schools: file.schools ?? [],
+          meta: file.meta ?? null,
+          error: null,
+        })
       })
       .catch((error) => {
-        // AbortError is expected when the effect cleans up — ignore it.
         if (error.name === 'AbortError') return
-        setState({ status: 'error', schools: [], error })
+        setState({ status: 'error', schools: [], meta: null, error })
       })
 
     return () => controller.abort()

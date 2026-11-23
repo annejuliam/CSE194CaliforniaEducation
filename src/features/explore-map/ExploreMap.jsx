@@ -3,19 +3,15 @@ import VisuallyHidden from '../../components/VisuallyHidden'
 import InteractiveMap from './InteractiveMap'
 import { useSchoolsData } from './hooks/useSchoolsData'
 
-/**
- * Public entry point for the Explore Map feature.
- *
- * Handles loading / error for school data, then hands off to InteractiveMap.
- * Page layout (heading, section id) stays in `pages/Main.jsx`.
- */
+/** Loads joined school datasets, then renders the Explore Map. */
 export default function ExploreMap() {
-  const { status, schools } = useSchoolsData()
+  const { status, schools, meta } = useSchoolsData()
 
   if (status === 'error') {
     return (
       <Alert severity="error">
-        School locations could not be loaded. Please refresh the page to try again.
+        School data could not be loaded. Run <code>npm run build:schools</code> and
+        refresh the page.
       </Alert>
     )
   }
@@ -29,5 +25,14 @@ export default function ExploreMap() {
     )
   }
 
-  return <InteractiveMap schools={schools} />
+  if (!schools.length) {
+    return (
+      <Alert severity="info">
+        No schools with coordinates are available yet. Add locations and rebuild with{' '}
+        <code>npm run build:schools</code>.
+      </Alert>
+    )
+  }
+
+  return <InteractiveMap schools={schools} meta={meta} />
 }

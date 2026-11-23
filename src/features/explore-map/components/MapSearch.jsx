@@ -3,14 +3,7 @@ import SearchIcon from '@mui/icons-material/Search'
 import { PLACE_TYPE_LABELS } from '../config'
 import { formatShare } from '../format'
 
-/**
- * Autocomplete search for cities and schools.
- *
- * `value={null}` keeps the field empty after each pick so the user can
- * immediately search for a second school (for marker B).
- *
- * MUI v9 uses `slotProps` (not the older `InputProps` / `inputProps` API).
- */
+/** Search cities or schools; schools show FRPM in the dropdown. */
 export default function MapSearch({ options, onSelect }) {
   return (
     <Autocomplete
@@ -19,11 +12,20 @@ export default function MapSearch({ options, onSelect }) {
       blurOnSelect
       options={options}
       value={null}
-      // Groups need options pre-sorted by type (see buildSearchablePlaces).
       groupBy={(place) => PLACE_TYPE_LABELS[place.type]}
       getOptionLabel={(place) => place.name}
       isOptionEqualToValue={(a, b) => a.id === b.id}
-      noOptionsText="No matching cities"
+      noOptionsText="No matching schools or cities"
+      filterOptions={(options, { inputValue }) => {
+        const query = inputValue.trim().toLowerCase()
+        const pool = query.length < 2
+          ? options.filter((place) => place.type === 'city')
+          : options.filter((place) => place.name.toLowerCase().includes(query))
+        return pool
+          .slice()
+          .sort((a, b) => a.type.localeCompare(b.type) || a.name.localeCompare(b.name))
+          .slice(0, 40)
+      }}
       onChange={(_event, place) => {
         if (place) onSelect(place)
       }}
@@ -51,7 +53,7 @@ export default function MapSearch({ options, onSelect }) {
         <TextField
           {...params}
           type="search"
-          placeholder="Search a city"
+          placeholder="Search a school or city"
           slotProps={{
             ...params.slotProps,
             input: {
@@ -59,7 +61,6 @@ export default function MapSearch({ options, onSelect }) {
               startAdornment: (
                 <>
                   <InputAdornment position="start">
-                    {/* Decorative icon — label is on the input itself. */}
                     <SearchIcon fontSize="small" aria-hidden="true" />
                   </InputAdornment>
                   {params.slotProps.input.startAdornment}
@@ -68,7 +69,7 @@ export default function MapSearch({ options, onSelect }) {
             },
             htmlInput: {
               ...params.slotProps.htmlInput,
-              'aria-label': 'Search for a city',
+              'aria-label': 'Search for a school or city',
             },
           }}
         />

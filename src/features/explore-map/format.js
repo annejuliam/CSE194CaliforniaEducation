@@ -1,14 +1,17 @@
-/**
- * Display helpers for school metrics.
- * FRPM shares in the data are 0–1; format them as percents only here.
- */
+/** Display helpers. Shares in the data are 0–1; format as percents only here. */
 
 const percentFormatter = new Intl.NumberFormat('en-US', {
   style: 'percent',
   maximumFractionDigits: 1,
 })
 
-/** @param {number | null | undefined} share value in 0–1 */
+const numberFormatter = new Intl.NumberFormat('en-US')
+
+const signedFormatter = new Intl.NumberFormat('en-US', {
+  maximumFractionDigits: 1,
+  signDisplay: 'exceptZero',
+})
+
 export function formatShare(share) {
   if (share === null || share === undefined || Number.isNaN(share)) return 'Unavailable'
   return percentFormatter.format(share)
@@ -16,5 +19,11 @@ export function formatShare(share) {
 
 export function formatEnrollment(count) {
   if (count === null || count === undefined) return 'Unavailable'
-  return new Intl.NumberFormat('en-US').format(count)
+  return numberFormatter.format(count)
+}
+
+/** Dashboard “Distance from Standard” (points above/below standard). */
+export function formatDistanceFromStandard(value) {
+  if (value === null || value === undefined || Number.isNaN(value)) return 'Unavailable'
+  return signedFormatter.format(value)
 }

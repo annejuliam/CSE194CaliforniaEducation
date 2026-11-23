@@ -26,8 +26,8 @@ export default function NavBar() {
                 borderColor: "divider",
             }}
         >
-            <Typography variant="h6" sx={{ mr: { md: 2 }, fontWeight: 700 }}>
-                Project Name
+            <Typography variant="h6" sx={{ mr: { md: 2 }, fontWeight: 700, fontSize: { xs: '0.95rem', md: '1.15rem' } }}>
+                CA Schools & Inequality
             </Typography>
 
             {sections.map((section) => {
